@@ -825,8 +825,9 @@ function productDelete() {
               "accept": "application/json",
               "Access-Control-Allow-Origin":"*"
           },
-		type:'GET',
+	type:'POST',
     dataType: 'json',
+	    data:details,
 		
 		    success:function(response){
           
