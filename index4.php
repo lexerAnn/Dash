@@ -819,15 +819,15 @@ function productDelete() {
     console.log(pass1)
     var proxy = 'https://cors-anywhere.herokuapp.com/';
     $.ajax({
-		url:'https://fdfdfdv.herokuapp.com/spectrum',
+		url:'https://fdfdfdv.herokuapp.com/home',
     crossDomain: true,
     headers: {
               "accept": "application/json",
               "Access-Control-Allow-Origin":"*"
           },
-	type:'POST',
+	type:'GET',
     dataType: 'json',
-	    data:details,
+	   
 		
 		    success:function(response){
           
