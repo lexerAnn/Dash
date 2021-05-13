@@ -819,18 +819,7 @@ header('Access-Control-Allow-Origin: *');
 <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
  
   <script>
-       function productDelete(ctl) {
-        _row = $(ctl).parents("tr");
-        var cols = _row.children("td");
-    var dId=$(cols[1]).text()
-    var baseU=$(cols[6]).text()
-    var para = new URLSearchParams();
-    var para2 = new URLSearchParams();
-    console.log(baseU)
-    para.append("deviceId", dId); 
-    para2.append("baseUrl", baseU);   
-    location.href = "index4.php"+"?" +  para.toString() +"&"+ para2.toString();
-}
+   
 
 $(document).ready(function(){
  
@@ -853,12 +842,7 @@ $(document).ready(function(){
             "<td class='row-data'>"+dt.operator+"</td>"+
             "<td class='row-data'>"+dt.antennaheighttype+"</td>"+
             "<td class='row-data'>"+dt.basestationUrl+"</td>"+
-            "<td>" +
-            "<button type='button' onclick='productDelete(this);' class='btn btn-default'>"+
-              "<span class='glyphicon glyphicon-remove' />" +
-              "</button>" +
-              "</td>" +
-            +"</tr>"
+	"</tr>"
             );
             num++
             
