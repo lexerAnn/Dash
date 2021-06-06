@@ -32,7 +32,7 @@ header('Access-Control-Max-Age: 1000')?>
   	<link href="assets/css/app-style.css" rel="stylesheet"/>
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-  
+  <style type="text/css">
 		
 #second,#third,#fourth{display: none}
 
