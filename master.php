@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Max-Age: 1000')?>
+
+<html lang="en">
+
 <html>
 <head>
 	<meta charset="utf-8"/>
