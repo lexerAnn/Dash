@@ -50,7 +50,7 @@
           <i class="icon-home"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> NCA Approved dev</a></li>
+          <li><a href="index3.html"><i class="fa fa-circle-o"></i> NCA Approved dev</a></li>
           <li><a href="index-2.html"><i class="fa fa-circle-o"></i> Current Operating dev</a></li>
           <!--li><a href="index3.html"><i class="fa fa-circle-o"></i> Dashboard v3</a></li>
           <li><a href="index4.html"><i class="fa fa-circle-o"></i> Dashboard v4</a></li-->
@@ -102,7 +102,7 @@
 	 						<input type="text" name="username" class="form-control" placeholder="Device ID" id="username"  required>
 	 						<b class="danger" id="usernameError" style="color: white"></b>
 	 					</div>
-	 					<div class="form-group">
+	 					<!-- <div class="form-group">
 	 						<div class="label" style="color: white">Password</div>
 	 						<input type="password" name="pass" class="form-control" placeholder="Password" id="pass">
 	 						<b class="danger" id="passError" style="color: white"></b>
@@ -111,7 +111,7 @@
 	 						<div class="label" style="color: white">Confirm Password</div>
 	 						<input type="password" name="cpass" class="form-control" placeholder="Confirm password" id="cpass">
 	 						<b class="danger" id="cpassError" style="color: white"></b>
-	 					</div>
+	 					</div> -->
 	 					<div class="form-group">
 	 						<button id="next-1" class="next">
 	 						<a href="#" class=" next" id="next-1" style="color: white">Next</a></button>
@@ -327,22 +327,22 @@ $("#next-1").click(function(e){
 		$("#usernameError").html('*');
 		return false;
 	}
-else if($("#pass").val()==''){
-$("#passError").html("*");
-return false;
-}
-else if ($("#pass").val().length<6) {
-	$("#passError").html("*");
-return false;
-}
-else if ($("#cpass").val()=='') {
-$("#cpassError").html("*");
-return false;
-}
-else if ($("#pass").val()!=$("#cpass").val()){
-	$("#cpassError").html("*");
-return false;
-}
+// else if($("#pass").val()==''){
+// $("#passError").html("*");
+// return false;
+// }
+// else if ($("#pass").val().length<6) {
+// 	$("#passError").html("*");
+// return false;
+// }
+// else if ($("#cpass").val()=='') {
+// $("#cpassError").html("*");
+// return false;
+// }
+// else if ($("#pass").val()!=$("#cpass").val()){
+// 	$("#cpassError").html("*");
+// return false;
+// }
 	
 	else{  $("#second").show();
 $("#first").hide();
@@ -447,23 +447,19 @@ else
 	$("#progressBar").css("width","100%");
 	$("#progressText").html("Finish");
 	$.ajax({
-		url:('https://safe-basin-01006.herokuapp.com/api/device_reg'),
+		url:('https://nca-online-db.herokuapp.com/api/nca_devices'),
 		method:'post',
 		dataType: 'json',
-		data:{"rulesetIDs":[{ "authority":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6","rulesetId":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6"}],"deviceDesc":{"username":$("#username").val(),"password":$("#pass").val(),"confirmpassword":$("#cpass").val(),"serialNumber": $("#serialnumber").val(),"modelId":$("#modelid").val(),"manufacturerId":$("#manufacturerid").val(),"longitude":$("#longitude").val(),"latitude":$("#latitude").val(),"conductedpower":$("#conductedpower").val(),"radiatedpower":$("#radiatedpower").val(),"region":$("#region").val(),"district":$("#district").val(),"transmitter_power":$("#transmitterpower").val(),"operator":$("#operator").val(),"antennaheight":$("#antennaheight").val(),"antennaheighttype":$("#antennaheighttype").val()},"key":"master"},
+		data:{"rulesetIDs":[{ "authority":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6","rulesetId":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6"}],"deviceDesc":{"deviceId":$("#username").val(),"serialNumber": $("#serialnumber").val(),"modelId":$("#modelid").val(),"manufacturerId":$("#manufacturerid").val(),"longitude":$("#longitude").val(),"latitude":$("#latitude").val(),"conductedpower":$("#conductedpower").val(),"radiatedpower":$("#radiatedpower").val(),"region":$("#region").val(),"district":$("#district").val(),"transmitterpower":$("#transmitterpower").val(),"operator":$("#operator").val(),"antennaheight":$("#antennaheight").val(),"antennaheighttype":$("#antennaheighttype").val()},"key":"master"},
 		    success:function(response){	
-		    console.log("New Username: "+response.username);
-		    console.log("New Password: "+response.password);
-		    var uniqueUsername=response.username;
-		    var uniquePassword=response.password;
-		    var uniqueID=uniqueUsername;
-		    var uniquePASS=uniquePassword;
-		    var link=document.createElement("a");
-		    link.href='data:text/txt,'+encodeURIComponent("New Username: "+uniqueID+"\nNew Password: "+uniquePASS);
-		    link.download="Login Details.txt";
-		    link.click();  
+				console.log(response)
+				alert("Base Station Registered");
+	
              $("#form-data")[0].reset();
-		       }
+		       },error:function(jqXhr, textStatus, errorThrown){
+						 console.log(errorThrown)
+						 console.log("ERROR")
+					 }
 	});
 	
 }
