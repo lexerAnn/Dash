@@ -31,6 +31,13 @@ header('Access-Control-Max-Age: 1000')?>
   	<!-- Custom Style-->
   	<link href="assets/css/app-style.css" rel="stylesheet"/>
 	<style type="text/css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  
 		
 #second,#third,#fourth{display: none}
 
@@ -507,7 +514,6 @@ $("#progressText").html("Step-3");
   <script src="assets/js/sidebar-menu.js"></script>
   <!-- Custom scripts -->
   <script src="assets/js/app-script.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>		
   
   <!-- Vector map JavaScript -->
   <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
