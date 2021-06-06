@@ -102,7 +102,7 @@
 	 						<input type="text" name="username" class="form-control" placeholder="Device ID" id="username"  required>
 	 						<b class="danger" id="usernameError" style="color: white"></b>
 	 					</div>
-	 					<!-- <div class="form-group">
+	 					<div class="form-group">
 	 						<div class="label" style="color: white">Password</div>
 	 						<input type="password" name="pass" class="form-control" placeholder="Password" id="pass">
 	 						<b class="danger" id="passError" style="color: white"></b>
@@ -111,7 +111,7 @@
 	 						<div class="label" style="color: white">Confirm Password</div>
 	 						<input type="password" name="cpass" class="form-control" placeholder="Confirm password" id="cpass">
 	 						<b class="danger" id="cpassError" style="color: white"></b>
-	 					</div> -->
+	 					</div>
 	 					<div class="form-group">
 	 						<button id="next-1" class="next">
 	 						<a href="#" class=" next" id="next-1" style="color: white">Next</a></button>
