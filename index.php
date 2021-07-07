@@ -146,7 +146,7 @@ else
 	
 		
 	$.ajax({
-		url:('http://127.0.0.1:8000/api/login'),
+		url:('https://nca-online-db.herokuapp.com/api/login'),
 		contentType: false,
 		processData: false,
 		enctype: 'application/x-www-form-urlencoded',
