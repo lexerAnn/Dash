@@ -275,15 +275,20 @@
     <li class="nav-item">
       <a class="nav-link toggle-menu" href="javascript:void();">
        <i class="icon-menu menu-icon"></i>
+     
      </a>
     </li>
-    <li class="nav-item">
-      <form class="search-bar">
-        <input type="text"name="search_text"  class="form-control" placeholder="Enterss keywords">
-         <a href="javascript:void();"><i class="icon-magnifier"></i></a>
-      </form>
+  
+  </ul>
+
+  <ul class="navbar-nav ml-auto align-items-center">
+    
+    <li class="nav-item ">
+      <button class="btn btn-danger" id="logout" >LOGOUT</button>
     </li>
   </ul>
+  
+  
      
   <!-- <ul class="navbar-nav align-items-center right-nav-link">
     <li class="nav-item dropdown-lg">
@@ -575,7 +580,7 @@
 				  </div>
                  </div>
                 </div>
-                <button class ="btn btn-primary" id = "btn">GET</button>
+              
                <div class="table-responsive">
                  <table class="table align-items-center table-flush">
                   <thead>
@@ -586,6 +591,9 @@
                      <th>District</th>
                      <th>Operator</th>
                      <th>Antenna Type</th>
+                     <th>Longitude</th>
+                     <th>Latutude</th>
+                     <th>More</th>
                    
                      <!--th>Shipping</th-->
                    </tr>
@@ -793,7 +801,7 @@
   <script src="assets/js/bootstrap.min.js"></script>
 	
   <!-- simplebar js -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
   <!-- waves effect js -->
   <script src="assets/js/waves.js"></script>
@@ -809,7 +817,68 @@
   <script src="assets/plugins/Chart.js/Chart.min.js"></script>
  
   <script>
+
+    if(localStorage.getItem('token')==null){
+      location.href = "index.php"
+      console.log("empty")
+    }
+    else{
+ function productDelete(ctl) {
+    _row = $(ctl).parents("tr");
+    var cols = _row.children("td");
+    var base1=$(cols[0]).text();
+    var base2=$(cols[2]).text();
+    var base3=$(cols[3]).text();
+    var base4=$(cols[4]).text();
+    var base5=$(cols[5]).text();
+    var base6=$(cols[1]).text();
+    var base7=$(cols[6]).text();
+    var base8=$(cols[7]).text();
+    var para1 = new URLSearchParams();
+    var para2 = new URLSearchParams();
+    var para3 = new URLSearchParams();
+    var para4 = new URLSearchParams();
+    var para5 = new URLSearchParams();
+    var para6 = new URLSearchParams();
+    var para7= new URLSearchParams();
+    var para8 = new URLSearchParams();
+    para1.append("data1", base1); 
+    para2.append("data2", base2);
+    para3.append("data3", base3);  
+    para4.append("data4", base4);  
+    para5.append("data5", base5);  
+    para6.append("data6", base6);  
+    para7.append("data7", base7); 
+    para8.append("data8", base8);
+    console.log("dasda")
+    console.log(base7)    
+    location.href = "index12.php"+"?" +  para1.toString() +"&"+ para2.toString()+"&"+ para3.toString()+"&"+ para4.toString()+"&"+ para5.toString()+"&"+ para6.toString()+"&"+ para7.toString()+"&"+ para8.toString();
+}
+
+
+
 $(document).ready(function(){
+
+  let btn = document.getElementById("logout");
+
+btn.addEventListener("click", () => {
+  localStorage.removeItem('token');
+console.log("Logout")
+$.ajax({
+  url: "http://127.0.0.1:8000/api/logout",
+  type: 'POST',
+  data:"das",
+  // Fetch the stored token from localStorage and set in the header
+  headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
+  success:function(response){
+    console.log(response)
+  }
+});
+location.href = "index.php"
+
+
+});
+  //"https://nca-online-db.herokuapp.com/api/view-records
   
     $.get("http://127.0.0.1:8000/api/view-records",function(datas,status){
      console.log(datas)
@@ -822,7 +891,14 @@ $(document).ready(function(){
             "<td>"+dt.manufacturerId+"</td>"+
             "<td>"+dt.district+"</td>"+
             "<td>"+dt.operator+"</td>"+
-            "<td>"+dt.antennaheighttype+"</td>"
+            "<td>"+dt.antennaheighttype+"</td>"+
+            "<td>"+dt.longitude+"</td>"+
+            "<td>"+dt.latitude+"</td>"+
+            "<td>" +
+            "<button type='button' onclick='productDelete(this);' class='btn btn-default'>"+
+              "<span class='glyphicon glyphicon-remove' />" +
+              "</button>" +
+              "</td>" +
 
             +"</tr>"
             );
@@ -831,7 +907,7 @@ $(document).ready(function(){
  
 });
 
-
+    }
 
   </script>
   
