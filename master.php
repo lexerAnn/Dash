@@ -1,9 +1,4 @@
-<?php header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Max-Age: 1000')?>
-
-<html lang="en">
-
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8"/>
@@ -30,9 +25,7 @@ header('Access-Control-Max-Age: 1000')?>
   	<link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
   	<!-- Custom Style-->
   	<link href="assets/css/app-style.css" rel="stylesheet"/>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-  <style type="text/css">
+	<style type="text/css">
 		
 #second,#third,#fourth{display: none}
 
@@ -103,13 +96,15 @@ header('Access-Control-Max-Age: 1000')?>
 	 			<div class="form-outer">
 	 			<form  method="post" id="form-data">
 	 				<div id="first" class="page">
-	 					<h4 class="title" style="color: white">Basic Info:</h4>
-	 					<div class="form-group">
-	 						<div class="label" style="color: white">Device ID</div>
-	 						<input type="text" name="username" class="form-control" placeholder="Device ID" id="username"  required>
-	 						<b class="danger" id="usernameError" style="color: white"></b>
+	 					<h4 class="title" style="color: white">GDB Credentials:</h4>
+
+						 <div class="form-group">
+	 						<div class="label" style="color: white">Email</div>
+	 						<input type="text" name="email" class="form-control" placeholder="Email" id="email"  required>
+	 						<b class="danger" id="emailError" style="color: white"></b>
 	 					</div>
-	 					<!-- <div class="form-group">
+	 					
+	 					<div class="form-group">
 	 						<div class="label" style="color: white">Password</div>
 	 						<input type="password" name="pass" class="form-control" placeholder="Password" id="pass">
 	 						<b class="danger" id="passError" style="color: white"></b>
@@ -118,7 +113,7 @@ header('Access-Control-Max-Age: 1000')?>
 	 						<div class="label" style="color: white">Confirm Password</div>
 	 						<input type="password" name="cpass" class="form-control" placeholder="Confirm password" id="cpass">
 	 						<b class="danger" id="cpassError" style="color: white"></b>
-	 					</div> -->
+	 					</div>
 	 					<div class="form-group">
 	 						<button id="next-1" class="next">
 	 						<a href="#" class=" next" id="next-1" style="color: white">Next</a></button>
@@ -127,11 +122,18 @@ header('Access-Control-Max-Age: 1000')?>
 	 				</div>
 	 				<div id="second" class="page">
 	 					<h4 class="title" style="color: white">Device Information:</h4>
-	 					<div class="form-group">
+	 					
+						 <div class="form-group">
+	 						<div class="label" style="color: white">Device ID</div>
+	 						<input type="text" name="username" class="form-control" placeholder="Serial Number" id="username">
+	 						<b class="danger" id="usernameError" style="color: white"></b>
+	 					</div>
+						 <div class="form-group">
 	 						<div class="label" style="color: white">Serial Number</div>
 	 						<input type="text" name="serialnumber" class="form-control" placeholder="Serial Number" id="serialnumber">
 	 						<b class="danger" id="serialnumberError" style="color: white"></b>
 	 					</div>
+						 
 	 					<div class="form-group">
 	 						<div class="label" style="color: white">Manufacturer ID</div>
 	 						<input type="text" name="manufacturerid" class="form-control" placeholder="Manufacturer ID" id="manufacturerid">
@@ -252,7 +254,7 @@ header('Access-Control-Max-Age: 1000')?>
 	 </div>
 	 </div><!--End wrapper-->
 <script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  src="http://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -326,35 +328,37 @@ $("#next-1").click(function(e){
 	$("#usernameError").html('');
 	$("#passError").html('');
 	$("#cpassError").html('');	
-	if ($("#username").val()=='') {
-		$("#usernameError").html('*');
+	if ($("#email").val()=='') {
+		$("#email").html('*');
 		return false;
 	}
-	else if ($("#username").val().length<4) {
-		$("#usernameError").html('*');
-		return false;
-	}
+	// else if ($("#username").val().length<4) {
+	// 	$("#usernameError").html('*');
+	// 	return false;
+	// }
 // else if($("#pass").val()==''){
 // $("#passError").html("*");
 // return false;
 // }
-// else if ($("#pass").val().length<6) {
-// 	$("#passError").html("*");
-// return false;
-// }
+else if ($("#pass").val().length<6) {
+	$("#passError").html("Less than 6 characters");
+return false;
+}
 // else if ($("#cpass").val()=='') {
 // $("#cpassError").html("*");
 // return false;
 // }
-// else if ($("#pass").val()!=$("#cpass").val()){
-// 	$("#cpassError").html("*");
-// return false;
-// }
+else if ($("#pass").val()!=$("#cpass").val()){
+	$("#cpassError").html("*");
+return false;
+}
 	
 	else{  $("#second").show();
 $("#first").hide();
 $("#progressBar").css("width","40%");
-$("#progressText").html("Step-2"); }
+$("#progressText").html("Step-2");
+console.log($('#cpass').val())
+ }
 
 });
 $("#next-2").click(function(e){
@@ -454,21 +458,71 @@ else
 	$("#progressBar").css("width","100%");
 	$("#progressText").html("Finish");
 	$.ajax({
-		url:('https://nca-online-db.herokuapp.com/api/nca_devices'),
+		// 'https://nca-online-db.herokuapp.com/api/nca_devices'
+		url:('http://127.0.0.1:8000/api/nca_devices'),
 		method:'post',
 		dataType: 'json',
-		data:{"rulesetIDs":[{ "authority":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6","rulesetId":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6"}],"deviceDesc":{"deviceId":$("#username").val(),"serialNumber": $("#serialnumber").val(),"modelId":$("#modelid").val(),"manufacturerId":$("#manufacturerid").val(),"longitude":$("#longitude").val(),"latitude":$("#latitude").val(),"conductedpower":$("#conductedpower").val(),"radiatedpower":$("#radiatedpower").val(),"region":$("#region").val(),"district":$("#district").val(),"transmitterpower":$("#transmitterpower").val(),"operator":$("#operator").val(),"antennaheight":$("#antennaheight").val(),"antennaheighttype":$("#antennaheighttype").val()},"key":"master"},
+		headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
+		data:{"rulesetIDs":[{ "authority":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6","rulesetId":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6"}],"deviceDesc":{"deviceId":$("#username").val(),"serialNumber": $("#serialnumber").val(),"modelId":$("#modelid").val(),"manufacturerId":$("#manufacturerid").val(),"longitude":$("#longitude").val(),"latitude":$("#latitude").val(),"conductedpower":$("#conductedpower").val(),"radiatedpower":$("#radiatedpower").val(),"region":$("#region").val(),"district":$("#district").val(),"transmitterpower":$("#transmitterpower").val(),"operator":$("#operator").val(),"antennaheight":$("#antennaheight").val(),"antennaheighttype":$("#antennaheighttype").val(),"email":$("#email").val()},"key":"master"},
 		    success:function(response){	
 				console.log(response)
 				alert("Base Station Registered");
 	
-             $("#form-data")[0].reset();
+             	 $("#form-data")[0].reset();
 		       },error:function(jqXhr, textStatus, errorThrown){
 						 console.log(errorThrown)
 						 console.log("ERROR")
 					 }
 	});
+
+
+	$.ajax({
+		// 'https://nca-online-db.herokuapp.com/api/nca_devices'
+		url:('http://127.0.0.2:80/api/device_reg'),
+		method:'post',
+		dataType: 'json',
+		headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
+		data:{"rulesetIDs":[{ "authority":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6","rulesetId":"57c8e0e9-dbf9-314a-b985-ea431ec6b6f6"}],"deviceDesc":{"deviceId":$("#username").val(),"serialNumber": $("#serialnumber").val(),"modelId":$("#modelid").val(),"manufacturerId":$("#manufacturerid").val(),"longitude":$("#longitude").val(),"latitude":$("#latitude").val(),"conductedpower":$("#conductedpower").val(),"radiatedpower":$("#radiatedpower").val(),"region":$("#region").val(),"district":$("#district").val(),"transmitterpower":$("#transmitterpower").val(),"operator":$("#operator").val(),"antennaheight":$("#antennaheight").val(),"antennaheighttype":$("#antennaheighttype").val(),"email":$("#email").val()},"key":"master"},
+		    success:function(response){	
+				console.log(response)
+				// alert("Base Station Registered");
+				console.log("SetUp");
+            //  $("#form-data")[0].reset();
+		       },error:function(jqXhr, textStatus, errorThrown){
+						 console.log(errorThrown)
+						 console.log("ERROR")
+					 }
+	});
+
+	var form = $('#form-data')[0];
+	var data_gb = new FormData(form);
+			data_gb.append("password_confirmation",$("#cpass").val());
+			data_gb.append("password",$("#pass").val());
+			data_gb.append("email",$("#email").val());
+			data_gb.append("name","GDB");
+			console.log($("#pass").val());
 	
+	$.ajax({
+		// 'https://nca-online-db.herokuapp.com/api/nca_devices'
+		url:('http://127.0.0.2:80/api/register'),
+		method:'post',
+		contentType: false,
+		processData: false,
+		enctype: 'application/x-www-form-urlencoded',
+		dataType: 'json',
+		// headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
+		data:data_gb,
+		    success:function(response){	
+				console.log(response)
+				// alert("Base Station Registered");
+				console.log("SetUp");
+            //  $("#form-data")[0].reset();
+		       },error:function(jqXhr, textStatus, errorThrown){
+						 console.log(errorThrown)
+						 console.log("ERROR")
+				}
+	});
+
 }
 });
 $("#prev-2").click(function(){
@@ -499,7 +553,6 @@ $("#progressText").html("Step-3");
 <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
-		
 	
   <!-- simplebar js -->
   <script src="assets/plugins/simplebar/js/simplebar.js"></script>
