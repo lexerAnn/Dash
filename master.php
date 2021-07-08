@@ -520,7 +520,7 @@ else
 	
 	$.ajax({
 		// 'https://nca-online-db.herokuapp.com/api/nca_devices'
-		url:('http://127.0.0.2:80/api/register'),
+		url:('https://tvwsgeolocationdb.herokuapp.com/api/register'),
 		method:'post',
 		contentType: false,
 		processData: false,
