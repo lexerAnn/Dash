@@ -475,7 +475,7 @@ else
 	$("#progressText").html("Finish");
 	$.ajax({
 		// 'https://nca-online-db.herokuapp.com/api/nca_devices'
-		url:('http://127.0.0.1:8000/api/nca_devices'),
+		url:('https://nca-online-db.herokuapp.com/api/nca_devices'),
 		method:'post',
 		dataType: 'json',
 		headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
