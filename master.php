@@ -494,7 +494,7 @@ else
 
 	$.ajax({
 		// 'https://nca-online-db.herokuapp.com/api/nca_devices'
-		url:('https://tvwsgeolocationdb.herokuapp.com/api/device_reg'),
+		url:('https://tvwsgeolocationdb.herokuapp.com/api/device_register'),
 		method:'post',
 		dataType: 'json',
 		headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
