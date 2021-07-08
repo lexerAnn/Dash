@@ -226,7 +226,7 @@ $(document).ready(function(){
     console.log("DELETE")
     var dict = {deviceId : data6};
     $.ajax({
-		url:'http://127.0.0.1:8000/api/delete_nca_devices',
+		url:'https://nca-online-db.herokuapp.com/api/delete_nca_devices',
     headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
 		type:'POST',
 		data : JSON.stringify(dict),
