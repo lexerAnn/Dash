@@ -262,7 +262,7 @@ $(document).ready(function(){
     console.log("UPDATE")
     var dict = {deviceId :$("#ID").val(),serialNumber:$("#SID").val(),longitude:$("#LONG").val(),latitude:$("#LAT").val()};
     $.ajax({
-		url:'http://127.0.0.1:8000/api/update_nca_devices',
+		url:'https://nca-online-db.herokuapp.com/api/update_nca_devices',
     headers: {"Authorization": "Bearer " + localStorage.getItem('token')},
 		type:'POST',
 		data : JSON.stringify(dict),
