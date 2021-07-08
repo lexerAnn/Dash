@@ -11,8 +11,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<!--favicon-->
 	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-  	<!-- Vector CSS -->
-  	<link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+  
   	<!-- simplebar CSS-->
   	<link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
   	<!-- Bootstrap core CSS-->
