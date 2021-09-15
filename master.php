@@ -113,7 +113,11 @@
 	 			<form  method="post" id="form-data">
 	 				<div id="first" class="page">
 	 					<h4 class="title" style="color: white">GDB Credentials:</h4>
-
+						<div class="form-group">
+	 						<div class="label" style="color: white">Username</div>
+	 						<input type="text" name="username_" class="form-control" placeholder="Username" id="username_"  required>
+	 						<b class="danger" id="username_Error" style="color: white"></b>
+	 					</div>
 						 <div class="form-group">
 	 						<div class="label" style="color: white">Email</div>
 	 						<input type="text" name="email" class="form-control" placeholder="Email" id="email"  required>
