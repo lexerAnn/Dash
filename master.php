@@ -515,7 +515,7 @@ else
 			data_gb.append("password_confirmation",$("#cpass").val());
 			data_gb.append("password",$("#pass").val());
 			data_gb.append("email",$("#email").val());
-			data_gb.append("name","GDB");
+			data_gb.append("name",$("#username_").val());
 			console.log($("#pass").val());
 	
 	$.ajax({
