@@ -83,6 +83,9 @@
 	 						<button type="submit" name="submit" value="Submit" id="submit" class="success" style="color: white">Submit</button>
 	 					 
 	 					</div>
+						<div class="spinner-border" role="status" id="spinner" style="visibility:hidden">
+						 <span class="visually-hidden"></span>
+							</div>
 	 					</div>
 	 				    </div>
 	 				</div>
@@ -134,7 +137,9 @@ else if ($("#password").val()!=$("#cpassword").val()){
 
 else
 {
-
+let spinner = document.getElementById("spinner");
+	spinner.style.visibility = 'visible';
+	
 	var form = $('#form-data')[0];
 	        // FormData object 
 			var data = new FormData(form);
@@ -157,6 +162,7 @@ else
 				console.log(response.token)
 				localStorage.setItem('token', response.token)
 				para1.append("data1", $("#email").val());
+			    	spinner.style.visibility = 'hidden';
         location.href = "index3.html" +"?" +  para1.toString(); 
 		// para1.append("data1", $("#email").val()); 
         alert("Success")
@@ -167,6 +173,7 @@ else
 						 console.log(jqXhr.responseText);
 						 console.log("ERROR");
 						 console.log(form);
+			       	spinner.style.visibility = 'hidden';
 					 }
 	});
 	
